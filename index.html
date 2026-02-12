@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Kaynaaat</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Floating Hearts and Stars Animation (Enhanced) -->
+  <div class="hearts">
+    <div class="heart">💖</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💞</div>
+  </div>
+  <div class="stars">
+    <div class="star">✨</div>
+    <div class="star">⭐</div>
+    <div class="star">🌟</div>
+  </div>
+
+  <!-- Dark Mode Toggle (New) -->
+  <button id="darkModeToggle" class="dark-toggle">🌙 Dark Mode</button>
+
+  <!-- Landing Question -->
+  <div id="landing" class="landing-screen">
+    <h1>When did we first meet?</h1>
+    <input type="date" id="meet-date" />
+    <button class="primary-btn glow" onclick="checkDate()">Unlock Forever 💖</button>
+    <p id="error-msg" class="error-msg"></p>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="hidden">
+    <!-- Hero with Typewriter Effect (Enhanced) -->
+    <section class="section hero reveal">
+      <h1 id="typewriter">You were never temporary, Kaynaaat. You were always my forever.</h1>
+      <p>You were always my forever.</p>
+      <button class="centered-btn" onclick="showLovePopup()">Eternal Love 💕</button>
+      <button class="primary-btn glow" onclick="scrollNext()">Come closer 🤍</button>
+    </section>
+
+    <!-- Love Counter -->
+    <section class="section reveal centered">
+      <h2>Our Love Journey</h2>
+      <p id="loveCounter">Days of Loving You: Calculating...</p>
+      <p>From May 2025, every day is a new chapter of us. Not just Valentine's, but forever.</p>
+    </section>
+
+    <!-- New: Why I Love You -->
+    <section class="section reveal">
+      <h2>Why I Love You</h2>
+      <div class="card reveal">Your smile that lights up my darkest days.</div>
+      <div class="card reveal">The way you understand me without words.</div>
+      <div class="card reveal">Your kindness that makes the world better.</div>
+      <div class="card reveal">How you make every moment feel special.</div>
+      <div class="card reveal">Your strength and grace in everything you do.</div>
+      <p class="centered bold">Every reason grows stronger with time, from May 2025 onward.</p>
+    </section>
+
+    <!-- Revealing Text Section -->
+    <section class="section reveal">
+      <h2>Whispers of Forever</h2>
+      <div class="button-group">
+        <button class="reveal-btn confetti-btn" data-text="Your smile lights up my world every morning. I love you more with each sunrise, from May 2025 onward.">Morning Love</button>
+        <button class="reveal-btn confetti-btn" data-text="In the quiet nights, I hold you in my heart. Our love grows stronger, year after year, until eternity.">Night Whispers</button>
+        <button class="reveal-btn confetti-btn" data-text="Through every challenge, you're my anchor. I promise to cherish you every day, till the day I die.">Eternal Promise</button>
+      </div>
+      <p id="revealedText" class="hidden"></p>
+    </section>
+
+    <!-- Memory Moments -->
+    <section class="section reveal">
+      <h2>The moments I will never forget</h2>
+      <div class="memory-card circle reveal">
+        The way you rested on me… wrapped in my arms.
+      </div>
+      <div class="memory-card circle reveal">
+        When I kissed your forehead and your hands softly.
+      </div>
+      <div class="memory-card circle reveal">
+        When I held your hands and everything felt right.
+      </div>
+      <div class="memory-card circle reveal">
+        When I placed my hand on your cheek… and you felt peace.
+      </div>
+      <p class="centered final-line">
+        I remember these moments daily.<br>
+        And I promise you — I will give you that peace forever.
+      </p>
+    </section>
+
+    <!-- How Forever Happened -->
+    <section class="section reveal">
+      <h2>How forever slowly happened</h2>
+      <div class="card reveal">The first time I realized I wasn’t going anywhere.</div>
+      <div class="card reveal">The moment you started feeling like home.</div>
+      <div class="card reveal">The day I stopped imagining life without you.</div>
+      <div class="card reveal">The moment I understood — you are my priority.</div>
+      <div class="card reveal">Today — when I’m even more sure.</div>
+      <p class="centered final-line">
+        I don’t just love you.<br>
+        I choose you. Every single day.
+      </p>
+    </section>
+
+    <!-- What You Mean To Me -->
+    <section class="section reveal">
+      <h2>What you are to me</h2>
+      <div class="card reveal">You are my peace.</div>
+      <div class="card reveal">You are my priority.</div>
+      <div class="card reveal">Your emotions matter to me more than anything.</div>
+      <div class="card reveal">Your tears are mine to protect.</div>
+      <div class="card reveal">Your happiness is my responsibility.</div>
+      <div class="card reveal">You are not part of my life — you are my life.</div>
+      <p class="centered bold">
+        Kaynaaat, you are everything to me.
+      </p>
+    </section>
+
+    <!-- Promise Section -->
+    <section class="section reveal">
+      <h2>What I Promise You</h2>
+      <div class="card reveal">To protect your heart like it’s my own.</div>
+      <div class="card reveal">To never make you feel alone.</div>
+      <div class="card reveal">To value your emotions, always.</div>
+      <div class="card reveal">To grow with you, not away from you.</div>
+      <div class="card reveal">To hold you the same way — even 40 years from now.</div>
+      <p class="centered final-line">
+        This is not temporary love.<br>
+        This is lifelong intention.
+      </p>
+    </section>
+
+    <!-- Future Years Timeline -->
+    <section class="section reveal">
+      <h2>Our Future Years</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">2025: Building our dreams together.</div>
+        <div class="timeline-item reveal">2027, March: Our marriage, Insha Allah — a new beginning of forever.</div>
+        <div class="timeline-item reveal">2030: Celebrating milestones, hand in hand.</div>
+        <div class="timeline-item reveal">2040: Growing old, but loving you more.</div>
+        <div class="timeline-item reveal">Forever: My heart beats for you till the end.</div>
+      </div>
+    </section>
+
+    <!-- New: Photo Gallery -->
+    <section class="section reveal">
+      <h2>Our Memories in Photos</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/200x200?text=Our+First+Date" alt="Memory 1" class="gallery-img reveal">
+        <img src="https://via.placeholder.com/200x200?text=Forever+Together" alt="Memory 2" class="gallery-img reveal">
+        <img src="https://via.placeholder.com/200x200?text=Love+Story" alt="Memory 3" class="gallery-img reveal">
+      </div>
+      <p class="centered">Replace with our real photos — each one a reminder of our eternal love.</p>
+    </section>
+
+    <!-- New: Love Quiz -->
+    <section class="section reveal centered">
+      <h2>Test Your Love Knowledge</h2>
+      <button class="primary-btn" onclick="startQuiz()">Start Quiz 💡</button>
+      <div id="quiz" class="hidden">
+        <p id="question"></p>
+        <button class="quiz-btn" onclick="answerQuiz(true)">Yes</button>
+        <button class="quiz-btn" onclick="answerQuiz(false)">No</button>
+        <p id="quizResult"></p>
+      </div>
+    </section>
+
+    <!-- New: Virtual Hug -->
+    <section class="section reveal centered">
+      <button class="primary-btn pulse" onclick="virtualHug()">Hug Me Virtually 🤗</button>
+      <p id="hugMessage" class="hidden">Sending you a big virtual hug! I love you endlessly. 💕</p>
+    </section>
+
+    <!-- Interactive Surprise -->
+    <section class="section reveal centered">
+      <button class="primary-btn pulse glow move-closer" onclick="unlockSecret()">Click if you know you’re mine 💌</button>
+    </section>
+
+    <!-- Password Section -->
+    <section class="section reveal centered">
+      <button class="secondary-btn glow move-closer" onclick="unlockSecret()">Enter our private world ✨</button>
+      <div id="secret" class="hidden reveal-secret">
+        <h2>This part is only for my forever.</h2>
+        <p>
+          I don’t need a holiday to love you.<br>
+          I just wanted a website to prove it.
+        </p>
+        <p>— Muarij</p>
+      </div>
+    </section>
+
+    <!-- New: Music Player -->
+    <section class="section reveal centered">
+      <h2>Our Love Song</h2>
+      <audio id="loveSong" controls>
+        <source src="path/to/your/love-song.mp3" type="audio/mpeg"> <!-- Replace with your audio file -->
+        Your browser does not support the audio element.
+      </audio>
+      <p>Play this while thinking of us — forever yours.</p>
+    </section>
+
+    <!-- Pop-Up Modal -->
+    <div id="lovePopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>My Heart's Eternal Vow</h2>
+        <p>Kaynaaat, from May 2025 till the day I die, you are my everything. Every breath, every moment—yours forever.</p>
+        <button class="close-btn" onclick="closePopup()">Close 💖</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Made with love by Muarij. From May 2025 till the day I die.</p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

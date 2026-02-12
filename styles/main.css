@@ -1,0 +1,321 @@
+/* --------- Base Reset --------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { 
+  font-family: 'Inter', sans-serif; 
+  background: linear-gradient(to bottom, #f7f3ef, #fbeaea), url('https://example.com/starry-bg.jpg') no-repeat center/cover; /* Add a subtle starry background image if you have one */
+  color:#2c2c2c; 
+  overflow-x:hidden; 
+  position: relative;
+  transition: background 0.5s ease, color 0.5s ease; /* For dark mode */
+}
+body.dark { background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); color: #f7f3ef; } /* Dark mode */
+
+.hidden { display:none; }
+
+main { max-width:800px; margin:auto; padding:80px 20px; }
+
+h1,h2 { font-family:'Playfair Display', serif; margin-bottom:20px; }
+p { margin-top:12px; }
+
+/* --------- Dark Mode Toggle (New) --------- */
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background: #e8b4b8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: background 0.3s;
+}
+.dark-toggle:hover { background: #d4af37; }
+
+/* --------- Floating Hearts and Stars (Enhanced) --------- */
+.hearts, .stars {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.heart, .star {
+  position: absolute;
+  font-size: 2em;
+  animation: floatHearts 10s linear infinite;
+}
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 6s; }
+.star:nth-child(1) { left: 20%; animation-delay: 1s; }
+.star:nth-child(2) { left: 60%; animation-delay: 3s; }
+.star:nth-child(3) { left: 80%; animation-delay: 5s; }
+@keyframes floatHearts {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* --------- Landing Screen --------- */
+.landing-screen {
+  position: fixed; 
+  inset: 0; 
+  background: linear-gradient(120deg, #f7f3ef, #fbeaea); 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 9999;
+  animation: breathe 20s ease infinite;
+}
+
+.landing-screen input {
+  padding: 12px 16px;
+  margin-top:15px;
+  border-radius:12px;
+  border: 1px solid #d4b0b0;
+  font-size: 1rem;
+  text-align:center;
+  outline:none;
+  background:#fff;
+}
+
+.landing-screen input:focus { border-color:#e8b4b8; box-shadow:0 0 8px rgba(232,180,184,0.5); }
+
+.error-msg { color:red; margin-top:10px; font-size:0.9rem; }
+
+/* --------- Centered Button --------- */
+.centered-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+.centered-btn:hover { transform: scale(1.1); }
+
+/* --------- Button Group and Revealing Text --------- */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.reveal-btn {
+  padding: 10px 20px;
+  background: #ff7675;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.reveal-btn:hover { background: #d63031; transform: scale(1.05); }
+#revealedText {
+  opacity: 0;
+  transition: opacity 1s ease;
+  font-size: 1.2em;
+  margin-top: 20px;
+  font-style: italic;
+}
+#revealedText.show { opacity: 1; }
+
+/* --------- Move Closer on Press --------- */
+.move-closer:active { transform: scale(1.2) translateZ(50px); }
+
+/* --------- Pop-Up Modal --------- */
+.popup {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+.popup.show .popup-content { transform: scale(1); }
+.close-btn { 
+  margin-top: 10px; 
+  padding: 5px 10px; 
+  background: #e17055; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
+
+/* --------- Timeline --------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.timeline-item {
+  background: rgba(255,255,255,0.8);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 5px solid #e8b4b8;
+  transition: transform 0.3s ease;
+}
+.timeline-item:hover { transform: translateX(10px); }
+
+/* --------- Typewriter Effect (New) --------- */
+#typewriter {
+  overflow: hidden;
+  border-right: 2px solid #e8b4b8;
+  white-space: nowrap;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #e8b4b8; }
+}
+
+/* --------- Parallax Background (New) --------- */
+body { background-attachment: fixed; } /* Subtle parallax on scroll */
+
+/* --------- Confetti Animation (New) --------- */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ff6b6b;
+  animation: confettiFall 3s linear infinite;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* --------- Gallery (New) --------- */
+.gallery {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.gallery-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.gallery-img:hover { transform: scale(1.1); }
+
+/* --------- Quiz (New) --------- */
+.quiz-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  background: #ff7675;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.quiz-btn:hover { background: #d63031; }
+
+/* --------- Virtual Hug (New) --------- */
+#hugMessage {
+  font-size: 1.2em;
+  color: #e8b4b8;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --------- Scroll Reveal --------- */
+.reveal { opacity:0; transform:translateY(40px); transition:all 1s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* --------- Cards --------- */
+.card {
+  background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+  padding:18px 22px; margin:18px auto; border-radius:16px;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  max-width:500px;
+}
+.card:nth-child(odd).reveal { transform:translateX(-50px); }
+.card:nth-child(even).reveal { transform:translateX(50px); }
+.card.reveal.visible { transform:translateX(0); }
+.card:hover { transform:scale(1.03) translateY(-4px); box-shadow:0 15px 40px rgba(0,0,0,0.1); }
+
+/* --------- Memory Circle --------- */
+.memory-card.circle {
+  width:230px; height:230px; border-radius:50%;
+  background:#fff5f7; display:flex; align-items:center; justify-content:center;
+  margin:30px auto; padding:40px; text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.05);
+  animation: float 6s ease-in-out infinite; font-size:0.95rem;
+  transition: transform 0.5s ease;
+}
+.memory-card.circle:hover { transform:translateY(-8px) scale(1.02); }
+@keyframes float { 0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);} }
+
+/* --------- Buttons --------- */
+.primary-btn,.secondary-btn {
+  padding:14px 28px; border-radius:30px; border:none; cursor:pointer; margin-top:25px; font-size:0.95rem; transition:all 0.3s ease;
+}
+.primary-btn { background:#e8b4b8; color:white; }
+.secondary-btn { background:#d4af37; color:white; }
+
+.glow { box-shadow:0 0 18px rgba(232,180,184,0.7); }
+.glow:hover { transform:scale(1.1) rotate(-1deg); box-shadow:0 0 28px rgba(232,180,184,1); }
+
+.pulse { animation:pulse 2.5s infinite; }
+@keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);} }
+
+.centered { text-align:center; }
+.bold { font-weight:600; color:#b36b6b; }
+.final-line { margin-top:25px; font-style:italic; }
+
+#secret { margin-top:40px; opacity:0; transform:translateY(20px); transition:1s ease; }
+#secret.visible { opacity:1; transform:translateY(0); }
+
+/* --------- Background Animation --------- */
+@keyframes breathe {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --------- Footer --------- */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.8);
+  font-style: italic;
+  color: #555;
+  margin-top: 40px;
+}
+
+/* --------- Reduced Motion --------- */
+@media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none;}}
