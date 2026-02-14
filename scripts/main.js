@@ -16,6 +16,27 @@ function checkDate() {
     errorMsg.textContent = "Hmm… that’s not it. Try again 💖";
   }
 }
+/* --------- Flower Shower Animation --------- */
+/* --------- Flower Shower Animation --------- */
+function showerFlowers() {
+  const flowers = ['🌹', '🌸']; // White rose and lily emojis
+  for (let i = 0; i < 50; i++) { // Number of flowers
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+    flower.style.animationDelay = Math.random() * 2 + 's'; // Random delay for natural fall
+    document.body.appendChild(flower);
+  }
+  // After 5 seconds of showering, fade out all flowers
+  setTimeout(() => {
+    const allFlowers = document.querySelectorAll('.flower');
+    allFlowers.forEach(flower => {
+      flower.classList.add('fade-out');
+      setTimeout(() => flower.remove(), 1000); // Remove after 1-second fade
+    });
+  }, 5000);
+}
 
 /* --------- Love Counter --------- */
 function startLoveCounter() {
@@ -23,24 +44,14 @@ function startLoveCounter() {
   const counterEl = document.getElementById('loveCounter');
   setInterval(() => {
     const now = new Date();
-    const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-    counterEl.textContent = `Days of Loving You: ${diff}`;
+    const diffMs = now - startDate;
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+    counterEl.textContent = `Days of Loving You: ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
   }, 1000);
 }
-
-/* --------- Revealing Text --------- */
-document.querySelectorAll('.reveal-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const text = btn.getAttribute('data-text');
-    const revealEl = document.getElementById('revealedText');
-    revealEl.textContent = text;
-    revealEl.classList.add('show');
-    // Trigger confetti if it's a confetti button
-    if (btn.classList.contains('confetti-btn')) {
-      triggerConfetti();
-    }
-  });
-});
 
 /* --------- Pop-Up Modal --------- */
 function showLovePopup() {
@@ -134,14 +145,36 @@ function scrollNext() {
   if(sections[1]) sections[1].scrollIntoView({behavior:'smooth'});
 }
 
-/* --------- Secret Unlock --------- */
+/* --------- Secret Unlock (Text) --------- */
 function unlockSecret() {
   const password = prompt("Hint: What I call you most?");
   if(password && password.toLowerCase().trim() === "pyaru bacha"){
-    const secret = document.getElementById('secret');
-    secret.classList.remove('hidden');
-    setTimeout(()=>secret.classList.add('visible'),100);
+    const secretText = document.getElementById('secretText');
+    secretText.classList.remove('hidden');
+    setTimeout(()=>secretText.classList.add('visible'),100);
   } else {
     alert("That's not it 🤍");
   }
+}
+
+/* --------- Gallery Unlock --------- */
+function unlockGallery() {
+  const password = prompt("Hint: What I call you most?");
+  if(password && password.toLowerCase().trim() === "pyaru bacha"){
+    const secretGallery = document.getElementById('secretGallery');
+    secretGallery.classList.remove('hidden');
+    setTimeout(()=>secretGallery.classList.add('visible'),100);
+  } else {
+    alert("That's not it 🤍");
+  }
+}
+
+/* --------- Pop-Up with Custom Text --------- */
+function showLovePopupWithText(text) {
+  const popup = document.getElementById('lovePopup');
+  const popupContent = popup.querySelector('.popup-content p');
+  popupContent.textContent = text; // Set the custom text in the pop-up
+  popup.classList.remove('hidden');
+  popup.classList.add('show');
+  triggerConfetti(); // Trigger confetti burst
 }
